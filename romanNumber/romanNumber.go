@@ -23,11 +23,10 @@ func romanLoop(input int, result string) (int, string) {
 			result = result + word2
 			input += key2
 		}
-		result = result + word1
-		input = input - key1
-	} else if input > 0 {
-		result = result + "I"
-		input = input - 1
+		if input > 0 {
+			result = result + word1
+			input = input - key1
+		}
 	}
 	return romanLoop(input, result)
 }
@@ -39,7 +38,9 @@ func getKey(data int) (int, int, string, string) {
 		return 50, 10, "L", "X"
 	} else if data >= 9 {
 		return 10, 1, "X", "I"
-	} else {
+	} else if data >= 4 {
 		return 5, 1, "V", "I"
+	} else {
+		return 1, 0, "I", ""
 	}
 }
