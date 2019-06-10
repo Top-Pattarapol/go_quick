@@ -16,16 +16,16 @@ func romanLoop(input int, result string) (int, string) {
 	if input == 0 {
 		return 0, result
 	}
-
 	key1, key2, word1, word2 := getKey(input)
-	if value := input - key1; value >= -key2 {
-		if value < 0 && value >= -key2 {
-			result = result + word2
-			input += key2
-		}
-		result = result + word1
-		input = input - key1
+	value := input - key1
+
+	if value < 0 {
+		result = result + word2
+		input += key2
 	}
+
+	result = result + word1
+	input = input - key1
 	return romanLoop(input, result)
 }
 
