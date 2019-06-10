@@ -18,12 +18,10 @@ func romanLoop(input int, result string) (int, string) {
 	}
 	key1, key2, word1, word2 := getKey(input)
 	value := input - key1
-
 	if value < 0 {
 		result = result + word2
 		input += key2
 	}
-
 	result = result + word1
 	input = input - key1
 	return romanLoop(input, result)
